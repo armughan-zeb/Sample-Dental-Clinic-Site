@@ -101,7 +101,7 @@ const TRUST_POINTS = [
 ];
 
 const STATS = [
-  { value: "5,000+", label: "Patients Treated" },
+  { value: "1,200+", label: "Patients Treated" },
   { value: "15+",    label: "Years Experience" },
   { value: "4.9★",   label: "Google Rating" },
   { value: "8",      label: "Specialties" },
@@ -111,7 +111,7 @@ export default function HomePage() {
   return (
     <>
       {/* ── 1. HERO ─────────────────────────────────────────────── */}
-      <section className="bg-[#0A0A0A] relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
+      <section className="bg-[#0A0A0A] relative overflow-hidden pt-24 pb-12 md:pt-36 md:pb-24">
         {/* Subtle grid */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -140,7 +140,7 @@ export default function HomePage() {
             </h1>
 
             <p className="text-[#A3A3A3] text-[17px] leading-relaxed mb-10 max-w-[440px]">
-              World-class treatments, transparent pricing, and zero compromise on your comfort. Trusted by over 5,000 patients across Abbottabad.
+              World-class treatments, transparent pricing, and zero compromise on your comfort. Trusted by the Abbottabad community.
             </p>
 
             <div className="flex items-center gap-4 flex-wrap">
@@ -284,7 +284,7 @@ export default function HomePage() {
         <div className="container mx-auto">
           <FadeIn className="mb-12">
             <span className="eyebrow">Patient Stories</span>
-            <h2 className="heading-lg text-[#0F172A]">Trusted by Thousands<br />Across Abbottabad.</h2>
+            <h2 className="heading-lg text-[#0F172A]">Trusted by the<br />Abbottabad Community.</h2>
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

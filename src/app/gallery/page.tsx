@@ -41,7 +41,7 @@ export default function GalleryPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-[#0A0A0A] pt-48 pb-32">
+      <section className="bg-[#0A0A0A] pt-32 pb-16 md:pt-48 md:pb-32">
         <div className="container mx-auto">
           <span className="eyebrow">Gallery</span>
           <h1 className="heading-xl !text-white mb-6">

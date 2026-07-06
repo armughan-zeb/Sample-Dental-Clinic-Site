@@ -49,7 +49,7 @@ const VALUES = [
 
 const STATS = [
   { value: "2009", label: "Founded" },
-  { value: "5,000+", label: "Patients" },
+  { value: "1,200+", label: "Patients" },
   { value: "8", label: "Specialists" },
   { value: "4.9★", label: "Google" },
 ];
@@ -58,7 +58,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-[#0A0A0A] pt-48 pb-32">
+      <section className="bg-[#0A0A0A] pt-32 pb-16 md:pt-48 md:pb-32">
         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-end">
           <div>
             <span className="eyebrow">About Us</span>
@@ -96,7 +96,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E2E8F0] border border-[#E2E8F0] rounded-2xl overflow-hidden shadow-sm">
             {VALUES.map((v) => (
               <FadeIn key={v.num}>
-                <div className="bg-white p-10 md:p-12 h-full hover:bg-[#F8FAFC] transition-colors">
+                <div className="bg-white p-6 sm:p-10 md:p-12 h-full hover:bg-[#F8FAFC] transition-colors">
                   <div className="text-[#06B6D4] font-heading font-bold text-sm mb-5">{v.num}</div>
                   <h3 className="font-heading font-bold text-[#0A0A0A] text-xl mb-3">{v.title}</h3>
                   <p className="text-[#64748B] text-[15px] leading-relaxed">{v.desc}</p>

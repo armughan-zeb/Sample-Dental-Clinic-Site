@@ -78,7 +78,7 @@ export default function ServicesPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-[#0A0A0A] pt-48 pb-32">
+      <section className="bg-[#0A0A0A] pt-32 pb-16 md:pt-48 md:pb-32">
         <div className="container mx-auto">
           <span className="eyebrow">Services</span>
           <h1 className="heading-xl !text-white mb-6 max-w-2xl">
@@ -97,7 +97,7 @@ export default function ServicesPage() {
           <div className="space-y-0 divide-y divide-[#E2E8F0] border border-[#E2E8F0] rounded-2xl overflow-hidden shadow-sm">
             {SERVICES.map((svc, idx) => (
               <FadeIn key={svc.name}>
-                <div className="p-8 md:p-12 bg-white hover:bg-[#F8FAFC] transition-colors group">
+                <div className="p-6 sm:p-8 md:p-12 bg-white hover:bg-[#F8FAFC] transition-colors group">
                   <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
 
                     {/* Left: Name + tagline */}
