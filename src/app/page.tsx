@@ -111,56 +111,96 @@ export default function HomePage() {
   return (
     <>
       {/* ── 1. HERO (Live Background Video) ─────────────────────── */}
-      <section className="relative min-h-[90vh] bg-[#0A0A0A] flex items-center overflow-hidden pt-24 pb-12">
-        {/* Background Video */}
-        <div className="absolute inset-0 z-0">
-          <video
-            src="/images/Dentist_working_with_patient's_t…_202607062108.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover object-right-top opacity-80"
-          />
-        </div>
+      <section className="relative bg-[#0A0A0A] flex flex-col overflow-hidden">
+        {/* ─── MOBILE LAYOUT ─── */}
+        <div className="relative flex flex-col md:hidden">
+          {/* Video thumbnail on mobile — cropped square, prominent */}
+          <div className="relative w-full h-[55vw] max-h-[320px] overflow-hidden">
+            <video
+              src="/images/Dentist_working_with_patient's_t…_202607062108.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover object-center"
+            />
+            {/* Soft bottom fade into dark bg */}
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0A0A0A] to-transparent" />
+          </div>
 
-        {/* Overlay Gradients - Reduced black frame intensity by 50% */}
-        <div className="absolute inset-0 bg-[#0A0A0A]/30 lg:bg-transparent lg:bg-gradient-to-r from-[#0A0A0A]/80 via-[#0A0A0A]/40 to-transparent z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] to-transparent z-10 opacity-40" />
-
-        {/* Subtle grid */}
-        <div
-          className="absolute inset-0 pointer-events-none z-10 opacity-30"
-          style={{
-            backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-          }}
-        />
-
-        {/* Hero Content */}
-        <div className="container mx-auto relative z-20">
-          <div className="max-w-2xl">
-            <div className="badge-premium mb-6 animate-fade-in-up">
-              <CheckCircle2 className="w-4 h-4 text-[#06B6D4]" />
+          {/* Text content below video on mobile */}
+          <div className="px-5 pt-4 pb-14">
+            <div className="badge-premium mb-4 animate-fade-in-up text-xs">
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#06B6D4]" />
               PMC Certified · Est. 2009
             </div>
-
-            <h1 className="heading-xl !text-white mb-6 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+            <h1 className="!text-white font-heading font-bold text-[2.4rem] leading-[1.1] tracking-tight mb-4 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
               Dental Care<br />
               That <span className="text-gradient">Sets the Standard.</span>
             </h1>
-
-            <p className="text-[#A3A3A3] text-[17px] leading-relaxed mb-10 max-w-[440px] animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-              World-class treatments, transparent pricing, and zero compromise on your comfort. Trusted by the Abbottabad community.
+            <p className="text-[#A3A3A3] text-[15px] leading-relaxed mb-8 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+              World-class treatments, transparent pricing, and zero compromise on your comfort. Trusted by Abbottabad.
             </p>
-
-            <div className="flex items-center gap-4 flex-wrap animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
-              <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary">
+            <div className="flex flex-col gap-3 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary justify-center w-full">
                 Book on WhatsApp <ArrowRight className="w-4 h-4" />
               </a>
-              <Link href="/services" className="btn-ghost-light">
+              <Link href="/services" className="btn-ghost-light justify-center w-full text-center">
                 Our Services
               </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* ─── DESKTOP LAYOUT ─── */}
+        <div className="hidden md:flex items-center min-h-[90vh] pt-28 pb-16 relative">
+          {/* Background Video */}
+          <div className="absolute inset-0 z-0">
+            <video
+              src="/images/Dentist_working_with_patient's_t…_202607062108.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover object-right-top opacity-80"
+            />
+          </div>
+
+          {/* Overlay Gradients */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/80 via-[#0A0A0A]/40 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] to-transparent z-10 opacity-40" />
+
+          {/* Subtle grid */}
+          <div
+            className="absolute inset-0 pointer-events-none z-10 opacity-20"
+            style={{
+              backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
+            }}
+          />
+
+          {/* Hero Content */}
+          <div className="container mx-auto relative z-20">
+            <div className="max-w-2xl">
+              <div className="badge-premium mb-6 animate-fade-in-up">
+                <CheckCircle2 className="w-4 h-4 text-[#06B6D4]" />
+                PMC Certified · Est. 2009
+              </div>
+              <h1 className="heading-xl !text-white mb-6 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+                Dental Care<br />
+                That <span className="text-gradient">Sets the Standard.</span>
+              </h1>
+              <p className="text-[#A3A3A3] text-[17px] leading-relaxed mb-10 max-w-[440px] animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+                World-class treatments, transparent pricing, and zero compromise on your comfort. Trusted by the Abbottabad community.
+              </p>
+              <div className="flex items-center gap-4 flex-wrap animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary">
+                  Book on WhatsApp <ArrowRight className="w-4 h-4" />
+                </a>
+                <Link href="/services" className="btn-ghost-light">
+                  Our Services
+                </Link>
+              </div>
             </div>
           </div>
         </div>
