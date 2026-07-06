@@ -1,0 +1,51 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
+
+interface FadeInProps {
+  children: ReactNode;
+  direction?: "up" | "down" | "left" | "right" | "none";
+  delay?: number;
+  duration?: number;
+  className?: string;
+}
+
+export default function FadeIn({
+  children,
+  direction = "up",
+  delay = 0,
+  duration = 0.6,
+  className = "",
+}: FadeInProps) {
+  const directions = {
+    up: { y: 30, x: 0 },
+    down: { y: -30, x: 0 },
+    left: { x: 30, y: 0 },
+    right: { x: -30, y: 0 },
+    none: { x: 0, y: 0 },
+  };
+
+  return (
+    <motion.div
+      initial={{
+        opacity: 0,
+        ...directions[direction],
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        x: 0,
+      }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{
+        duration: duration,
+        delay: delay,
+        ease: [0.21, 0.47, 0.32, 0.98], // Premium cubic-bezier
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
