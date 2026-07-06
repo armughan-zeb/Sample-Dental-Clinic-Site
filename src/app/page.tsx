@@ -113,23 +113,25 @@ export default function HomePage() {
       {/* ── 1. HERO (Live Background Video) ─────────────────────── */}
       <section className="relative bg-[#0A0A0A] flex flex-col overflow-hidden">
         {/* ─── MOBILE LAYOUT ─── */}
-        <div className="relative flex flex-col md:hidden">
-          {/* Video — 16:9 box, nothing cropped */}
-          <div className="relative w-full overflow-hidden bg-[#0A0A0A]" style={{ aspectRatio: "16/9" }}>
+        <div className="relative flex flex-col md:hidden min-h-[100svh]">
+          {/* Background Video — covers the full section */}
+          <div className="absolute inset-0 z-0">
             <video
               src="/images/Dentist_working_with_patient's_t…_202607062108.mp4"
               autoPlay
               loop
               muted
               playsInline
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover object-center"
             />
-            {/* Soft bottom fade into dark bg */}
-            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0A0A0A] to-transparent" />
           </div>
 
-          {/* Text content below video on mobile */}
-          <div className="px-5 pt-4 pb-14">
+          {/* Overlay Gradients — same style as desktop */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/95 via-[#0A0A0A]/50 to-[#0A0A0A]/30 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/60 to-transparent z-10" />
+
+          {/* Text content overlaid at the bottom */}
+          <div className="relative z-20 mt-auto px-5 pt-28 pb-14">
             <div className="badge-premium mb-4 animate-fade-in-up text-xs">
               <CheckCircle2 className="w-3.5 h-3.5 text-[#06B6D4]" />
               PMC Certified · Est. 2009
