@@ -151,7 +151,7 @@ export default function AboutPage() {
               15 Years of Clinical<br />Excellence in Abbottabad.
             </h2>
             <p className="text-[#64748B] text-[16px] leading-relaxed mb-8">
-              Founded in 2009, SmileCare Pro has grown into one of Abbottabad's most trusted dental practices — built on a foundation of medical rigour, patient empathy, and zero shortcuts.
+              Founded in 2009, SmileCare Pro has grown into one of Abbottabad&apos;s most trusted dental practices — built on a foundation of medical rigour, patient empathy, and zero shortcuts.
             </p>
             <ul className="space-y-4 mb-10">
               {[

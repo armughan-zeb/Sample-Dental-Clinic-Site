@@ -19,7 +19,7 @@ export default function Counter({ target, duration = 1500, suffix = "" }: Counte
         const entry = entries[0];
         if (entry.isIntersecting && !hasAnimated.current) {
           hasAnimated.current = true;
-          let start = 0;
+          const start = 0;
           const end = target;
           if (start === end) return;
 

@@ -41,11 +41,15 @@ export default function Navbar() {
   const isHome                      = pathname === "/";
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 56);
+    const onScroll = () => {
+      // Hero is standard height again, keep transparent until scrolled down ~50px
+      setScrolled(window.scrollY > 50);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isHome]);
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { setMenuOpen(false); }, [pathname]);
 
   // Transparent over dark hero only on home; white everywhere else

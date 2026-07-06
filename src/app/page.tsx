@@ -110,40 +110,51 @@ const STATS = [
 export default function HomePage() {
   return (
     <>
-      {/* ── 1. HERO ─────────────────────────────────────────────── */}
-      <section className="bg-[#0A0A0A] relative overflow-hidden pt-24 pb-12 md:pt-36 md:pb-24">
+      {/* ── 1. HERO (Live Background Video) ─────────────────────── */}
+      <section className="relative min-h-[90vh] bg-[#0A0A0A] flex items-center overflow-hidden pt-24 pb-12">
+        {/* Background Video */}
+        <div className="absolute inset-0 z-0">
+          <video
+            src="/images/Dentist_working_with_patient's_t…_202607062108.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover object-right-top opacity-80"
+          />
+        </div>
+
+        {/* Overlay Gradients - Reduced black frame intensity by 50% */}
+        <div className="absolute inset-0 bg-[#0A0A0A]/30 lg:bg-transparent lg:bg-gradient-to-r from-[#0A0A0A]/80 via-[#0A0A0A]/40 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] to-transparent z-10 opacity-40" />
+
         {/* Subtle grid */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 pointer-events-none z-10 opacity-30"
           style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
-            backgroundSize: "64px 64px",
+            backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
           }}
         />
-        {/* Accent glow — top right, extremely subtle */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#06B6D4]/3 rounded-full blur-[140px] pointer-events-none" />
 
-        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10 w-full">
-
-          {/* Left */}
-          <div className="flex flex-col">
-            {/* Premium Badge */}
-            <div className="badge-premium mb-8 self-start">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#06B6D4] shrink-0" />
+        {/* Hero Content */}
+        <div className="container mx-auto relative z-20">
+          <div className="max-w-2xl">
+            <div className="badge-premium mb-6 animate-fade-in-up">
+              <CheckCircle2 className="w-4 h-4 text-[#06B6D4]" />
               PMC Certified · Est. 2009
             </div>
 
-            <h1 className="heading-xl !text-white mb-6">
-              Dental Care That<br />
-              <span className="text-gradient">Sets the Standard.</span>
+            <h1 className="heading-xl !text-white mb-6 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+              Dental Care<br />
+              That <span className="text-gradient">Sets the Standard.</span>
             </h1>
 
-            <p className="text-[#A3A3A3] text-[17px] leading-relaxed mb-10 max-w-[440px]">
+            <p className="text-[#A3A3A3] text-[17px] leading-relaxed mb-10 max-w-[440px] animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
               World-class treatments, transparent pricing, and zero compromise on your comfort. Trusted by the Abbottabad community.
             </p>
 
-            <div className="flex items-center gap-4 flex-wrap">
+            <div className="flex items-center gap-4 flex-wrap animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary">
                 Book on WhatsApp <ArrowRight className="w-4 h-4" />
               </a>
@@ -151,32 +162,20 @@ export default function HomePage() {
                 Our Services
               </Link>
             </div>
-
-            {/* Stats */}
-            <div className="mt-16 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-6">
-              {STATS.map((s) => (
-                <div key={s.label}>
-                  <div className="text-white font-heading font-bold text-2xl tracking-tight">{s.value}</div>
-                  <div className="text-[#737373] text-[11px] font-semibold uppercase tracking-wider mt-1">{s.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
+        </div>
+      </section>
 
-          {/* Right — Doctor photo */}
-          <div className="hidden lg:block relative">
-            <div className="relative w-full max-w-[460px] mx-auto aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-white/10">
-              <Image
-                src="/images/dentist_doctor.png"
-                alt="Lead Dentist at SmileCare Pro"
-                fill
-                sizes="460px"
-                className="object-cover"
-                priority
-              />
-              {/* Refined gradient fade to match background */}
-              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent pointer-events-none" />
-            </div>
+      {/* ── 1.5. STATS BAR ──────────────────────────────────────── */}
+      <section className="bg-[#0A0A0A] py-12 border-b border-white/10 relative z-10">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {STATS.map((s) => (
+              <div key={s.label} className="pl-6 border-l border-white/10">
+                <div className="text-white font-heading font-bold text-3xl tracking-tight mb-1">{s.value}</div>
+                <div className="text-[#737373] text-[11px] font-semibold uppercase tracking-wider">{s.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -239,7 +238,7 @@ export default function HomePage() {
               15 Years of Clinical<br />Excellence in Abbottabad.
             </h2>
             <p className="text-[#A3A3A3] text-[16px] leading-relaxed mb-8">
-              Founded in 2009, SmileCare Pro has grown into one of Abbottabad's most trusted dental practices — built on a foundation of medical rigour, patient empathy, and zero shortcuts.
+              Founded in 2009, SmileCare Pro has grown into one of Abbottabad&apos;s most trusted dental practices — built on a foundation of medical rigour, patient empathy, and zero shortcuts.
             </p>
             <ul className="space-y-4 mb-10">
               {TRUST_POINTS.map((pt) => (
