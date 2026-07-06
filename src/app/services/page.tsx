@@ -1,161 +1,165 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowRight, Sparkles, Activity, Heart, Shield, Stethoscope, Clock, Smile } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 
-export const metadata: Metadata = {
-  title: "Dental Services | SmileCare Pro",
-  description: "Browse our premium dental treatments in Karachi, Pakistan. We offer cosmetic smile design, dental implants, root canal therapy, braces, and emergency services.",
-};
+export const metadata: Metadata = { title: "Dental Services | SmileCare Pro" };
 
-const allServices = [
+const WA_LINK =
+  "https://wa.me/923197301342?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20a%20dental%20treatment.";
+
+const SERVICES = [
   {
-    title: "Teeth Whitening",
-    slug: "teeth-whitening",
-    icon: Sparkles,
-    desc: "Brighten your smile up to 8 shades in a single laser session. Completely safe and monitored by senior cosmetic consultants.",
-    highlight: "Laser Zoom System",
+    name: "Teeth Whitening",
+    tagline: "Brighter in a single session.",
+    desc: "Our professional in-chair whitening uses medical-grade carbamide peroxide gel activated under precision LED light. Achieve 6–8 shades brighter in under an hour — no sensitivity, no shortcuts.",
+    details: ["In-chair LED whitening", "Take-home maintenance kit", "Sensitivity-free protocol", "Results last 12–18 months"],
+    duration: "60 minutes",
+    from: "PKR 8,000",
   },
   {
-    title: "Dental Implants",
-    slug: "dental-implants",
-    icon: Activity,
-    desc: "Titanium implants that look, feel, and function like natural teeth. Permanent replacement under sterile protocols.",
-    highlight: "Straumann Certified",
+    name: "Dental Implants",
+    tagline: "Permanent. Natural-feeling. Lifelong.",
+    desc: "Titanium implant fixtures are placed directly into the jawbone, integrating with your natural bone over 6–8 weeks. The result is a crown that looks, bites, and feels identical to a natural tooth.",
+    details: ["Swiss-grade titanium fixtures", "Ceramic or zirconia crown", "Bone grafting if required", "10-year warranty on fixtures"],
+    duration: "2–4 visits",
+    from: "PKR 75,000",
   },
   {
-    title: "Root Canal Therapy",
-    slug: "root-canal",
-    icon: Heart,
-    desc: "Advanced micro-endodontics to eliminate pain and save damaged/decayed teeth. Quick and 100% painless treatment.",
-    highlight: "Pain-Free Guarantee",
+    name: "Root Canal Treatment",
+    tagline: "Save the tooth. Eliminate the pain.",
+    desc: "Modern root canal therapy is painless with effective local anesthesia. We remove infected pulp, clean the canals, and seal the tooth — preserving it for years to come.",
+    details: ["Digital X-ray diagnosis", "Rotary endodontics system", "Rubber-dam isolation", "Permanent ceramic crown restoration"],
+    duration: "1–2 visits",
+    from: "PKR 12,000",
   },
   {
-    title: "Orthodontics (Braces)",
-    slug: "braces",
-    icon: Shield,
-    desc: "Straighten teeth using metal, ceramic, or modern invisible clear aligners. Customized treatment paths for all ages.",
-    highlight: "Clear Aligners Option",
+    name: "Braces & Clear Aligners",
+    tagline: "Straight teeth. Precise science.",
+    desc: "Whether you prefer traditional metal brackets or transparent aligner trays, we map out your full treatment digitally so you see the projected result before we begin.",
+    details: ["Digital smile simulation", "Metal, ceramic, or clear aligners", "Retainers included", "Monthly follow-up appointments"],
+    duration: "12–18 months",
+    from: "PKR 35,000",
   },
   {
-    title: "Porcelain Veneers",
-    slug: "veneers",
-    icon: Sparkles,
-    desc: "Custom wafer-thin porcelain shells bonded to the front of teeth for a dramatic smile transformation.",
-    highlight: "Aesthetic Design",
+    name: "Porcelain Veneers",
+    tagline: "A smile makeover in two visits.",
+    desc: "Wafer-thin porcelain shells are custom-crafted to cover discoloration, chips, gaps, or asymmetry. Minimal tooth preparation, maximum impact.",
+    details: ["Digital shade matching", "IPS e.max lithium disilicate ceramic", "Minimal enamel removal", "Stain and chip resistant"],
+    duration: "2 visits / 10 days",
+    from: "PKR 15,000 per tooth",
   },
   {
-    title: "Dental Crowns",
-    slug: "crowns",
-    icon: Stethoscope,
-    desc: "Restore heavily damaged teeth with metal-free porcelain or zirconia crowns that blend naturally with your teeth.",
-    highlight: "Metal-Free Zirconia",
+    name: "Scaling & Polishing",
+    tagline: "The foundation of healthy teeth.",
+    desc: "Professional ultrasonic scaling removes calculus and plaque from above and below the gum line that a toothbrush cannot reach — the single most preventive procedure in dentistry.",
+    details: ["Ultrasonic + hand scaling", "Air polishing & stain removal", "Periodontal pocket assessment", "Fluoride treatment included"],
+    duration: "45 minutes",
+    from: "PKR 3,500",
   },
   {
-    title: "Emergency Dentistry",
-    slug: "emergency-dentistry",
-    icon: Clock,
-    desc: "Immediate relief for severe toothache, dental trauma, crown loss, or active oral bleeding. 24/7 emergency hotline.",
-    highlight: "24/7 Immediate Help",
+    name: "Cosmetic Dentistry",
+    tagline: "Complete smile design.",
+    desc: "A full smile makeover combining multiple procedures — whitening, veneers, contouring, and bonding — designed digitally first so you approve the result before any work begins.",
+    details: ["Digital Smile Design (DSD)", "Combination treatment planning", "Full mockup & preview", "Customised payment plan"],
+    duration: "Varies by case",
+    from: "Custom quote",
   },
   {
-    title: "Children's Dentistry",
-    slug: "children-dentistry",
-    icon: Smile,
-    desc: "Friendly, anxiety-free pediatric dental checkups, cleaning, sealants, and cavity fillings for kids and teens.",
-    highlight: "Kid-Friendly Environment",
+    name: "Pediatric Dentistry",
+    tagline: "Gentle care for young patients.",
+    desc: "Our pediatric team is trained to work with children from age 2 upwards — making every visit calm and positive with distraction techniques, child-friendly instruments, and patience-first protocols.",
+    details: ["Child-friendly environment", "Fluoride treatments & sealants", "Habit counselling", "Parent education"],
+    duration: "30 minutes",
+    from: "PKR 2,500",
   },
 ];
 
 export default function ServicesPage() {
   return (
-    <div className="relative w-full">
-      {/* Page Header */}
-      <section className="relative bg-gradient-to-b from-[#EBF6F9] via-[#FAFCFD] to-[#FAFCFD] pt-32 pb-16 overflow-hidden border-b border-borders/30">
-        <div className="max-w-[1280px] mx-auto px-6 md:px-20 text-center relative z-10">
-          <span className="text-primary text-xs uppercase tracking-wider font-bold block mb-3">
-            Treatments & Solutions
-          </span>
-          <h1 className="font-heading font-bold text-4xl sm:text-5xl text-dark-navy mb-4">
-            Our Dental Services
+    <>
+      {/* Header */}
+      <section className="bg-[#020817] pt-32 pb-20">
+        <div className="container mx-auto">
+          <span className="eyebrow">Services</span>
+          <h1 className="heading-xl text-white mb-5 max-w-2xl">
+            Comprehensive Care,<br />
+            <span className="text-gradient">Zero Compromise.</span>
           </h1>
-          <p className="text-light-text text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-            From basic preventive care to complex surgical implants, we provide exceptional dental care with modern equipment.
+          <p className="text-[#94A3B8] text-[17px] max-w-lg leading-relaxed">
+            Eight specialties under one PMC-certified roof. Browse treatments below, then book a free consultation on WhatsApp.
           </p>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-24 bg-white">
-        <div className="max-w-[1280px] mx-auto px-6 md:px-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {allServices.map((service, idx) => {
-              const Icon = service.icon;
-              return (
-                <FadeIn key={idx} delay={idx * 0.04} className="h-full">
-                  <div className="group h-full bg-[#FAFCFD] border border-borders/60 p-8 rounded-2xl transition-all duration-300 hover:shadow-lg hover:border-primary/20 hover:-translate-y-1.5 flex flex-col justify-between">
-                    <div>
-                      {/* Top Row: Icon & Tag */}
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="w-12 h-12 bg-white rounded-xl border border-borders shadow-sm flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                          <Icon className="w-5 h-5 transition-transform duration-300 group-hover:rotate-6" />
-                        </div>
-                        <span className="text-[10px] font-bold text-primary bg-primary/10 px-2.5 py-1 rounded-full uppercase tracking-wider">
-                          {service.highlight}
-                        </span>
-                      </div>
+      {/* Services List */}
+      <section className="bg-white section">
+        <div className="container mx-auto">
+          <div className="space-y-0 divide-y divide-[#E2E8F0] border border-[#E2E8F0] rounded-xl overflow-hidden">
+            {SERVICES.map((svc, idx) => (
+              <FadeIn key={svc.name}>
+                <div className="p-8 md:p-10 bg-white hover:bg-[#F8FAFC] transition-colors group">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
 
-                      {/* Content */}
-                      <h3 className="font-heading font-bold text-xl text-dark-navy mb-3">
-                        {service.title}
-                      </h3>
-                      <p className="text-light-text text-sm leading-relaxed mb-8">
-                        {service.desc}
-                      </p>
+                    {/* Left: Name + tagline */}
+                    <div className="md:col-span-1">
+                      <div className="text-[#06B6D4] text-xs font-bold uppercase tracking-widest mb-2">
+                        {String(idx + 1).padStart(2, "0")}
+                      </div>
+                      <h2 className="font-heading font-bold text-[#0F172A] text-xl mb-1.5 group-hover:text-[#06B6D4] transition-colors">
+                        {svc.name}
+                      </h2>
+                      <p className="text-[#64748B] text-sm">{svc.tagline}</p>
                     </div>
 
-                    {/* Bottom Link */}
-                    <Link
-                      href={`/services/${service.slug}`}
-                      className="inline-flex items-center gap-1.5 text-primary font-sans text-xs font-bold uppercase tracking-wider hover:text-primary/80 transition-colors mt-auto"
-                    >
-                      <span>Explore Procedure Details</span>
-                      <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-                    </Link>
-                  </div>
-                </FadeIn>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+                    {/* Center: Description + details */}
+                    <div className="md:col-span-1">
+                      <p className="text-[#64748B] text-sm leading-relaxed mb-4">{svc.desc}</p>
+                      <ul className="space-y-1.5">
+                        {svc.details.map((d) => (
+                          <li key={d} className="flex items-center gap-2 text-[#334155] text-sm">
+                            <span className="w-1 h-1 rounded-full bg-[#06B6D4] shrink-0" />
+                            {d}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-      {/* Trust Checklist Banner */}
-      <section className="py-20 bg-dark-navy text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#FAFCFD_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
-        <div className="max-w-[1280px] mx-auto px-6 md:px-20 relative z-10 flex flex-col items-center gap-6">
-          <h2 className="font-heading font-bold text-2xl sm:text-3xl max-w-xl leading-tight">
-            Need Advice on What Treatment is Right for You?
-          </h2>
-          <p className="text-slate-400 text-sm max-w-lg leading-relaxed">
-            Reserve a diagnostic scan and checkup with our specialist consultants today. We will design a customized dental plan with transparent costing.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
-            <Link
-              href="/contact#appointment"
-              className="px-8 py-3.5 bg-primary text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all"
-            >
-              Request Consultation
-            </Link>
-            <a
-              href="https://wa.me/923001234567"
-              className="px-8 py-3.5 bg-white/10 hover:bg-white/15 border border-white/10 text-white font-semibold rounded-lg shadow transition-all flex items-center gap-2"
-            >
-              Chat on WhatsApp
+                    {/* Right: Price + CTA */}
+                    <div className="md:col-span-1 flex flex-col md:items-end justify-between gap-5">
+                      <div>
+                        <div className="text-[11px] text-[#94A3B8] uppercase tracking-wider font-semibold mb-1">Starting from</div>
+                        <div className="font-heading font-bold text-[#0F172A] text-lg">{svc.from}</div>
+                        <div className="text-[#94A3B8] text-xs mt-1">Duration: {svc.duration}</div>
+                      </div>
+                      <a
+                        href={WA_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary self-start md:self-auto"
+                      >
+                        Book Now <ArrowRight className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          {/* Insurance note */}
+          <div className="mt-12 p-6 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <p className="font-semibold text-[#0F172A] text-sm">Insurance & Installment Plans</p>
+              <p className="text-[#64748B] text-sm mt-1">
+                We partner with Jubilee Life, EFU Allianz, and Adamjee Insurance. 0% installment plans available on major treatments.
+              </p>
+            </div>
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-ghost-dark shrink-0">
+              Ask about pricing <ArrowRight className="w-4 h-4" />
             </a>
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }

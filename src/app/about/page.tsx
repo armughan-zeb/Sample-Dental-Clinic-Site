@@ -1,165 +1,205 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Check, ShieldCheck, Heart, Award, ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 
-export const metadata: Metadata = {
-  title: "About Us | SmileCare Pro",
-  description: "Learn about SmileCare Pro, Karachi's premium dental clinic. Read about our PMC-certified consultants, sterilization standards, and patient-first values.",
-};
+export const metadata: Metadata = { title: "About Us | SmileCare Pro" };
+
+const WA_LINK =
+  "https://wa.me/923197301342?text=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20SmileCare%20Pro.";
+
+const TEAM = [
+  {
+    name: "Dr. Aftab Ahmed",
+    role: "Clinic Director & Orthodontist",
+    credentials: "BDS, FCPS Orthodontics · PMC Reg. 12345",
+    img: "/images/dentist_doctor.png",
+  },
+  {
+    name: "Dr. Sarah Malik",
+    role: "Implantologist & Cosmetic Surgeon",
+    credentials: "BDS, MDS Implantology · PMC Reg. 67890",
+    img: "/images/dentist_doctor.png",
+  },
+];
+
+const VALUES = [
+  {
+    num: "01",
+    title: "Clinical Precision",
+    desc: "Every treatment plan is evidence-based, reviewed against the latest NICE guidelines, and tailored to each patient's anatomy.",
+  },
+  {
+    num: "02",
+    title: "Radical Transparency",
+    desc: "No hidden charges. No upselling. We explain every cost, every step, and every alternative before you commit to anything.",
+  },
+  {
+    num: "03",
+    title: "Sterilisation Standards",
+    desc: "Class B vacuum autoclave sterilisation on all instruments. ISO 9001:2015 certified. Audited bi-annually by an independent body.",
+  },
+  {
+    num: "04",
+    title: "Lifetime Aftercare",
+    desc: "Post-treatment check-ups, free emergency consultations, and a direct WhatsApp line to your treating doctor — always.",
+  },
+];
+
+const STATS = [
+  { value: "2009", label: "Founded" },
+  { value: "5,000+", label: "Patients" },
+  { value: "8", label: "Specialists" },
+  { value: "4.9★", label: "Google" },
+];
 
 export default function AboutPage() {
   return (
-    <div className="relative w-full">
-      {/* Page Header */}
-      <section className="relative bg-gradient-to-b from-[#EBF6F9] via-[#FAFCFD] to-[#FAFCFD] pt-32 pb-16 overflow-hidden border-b border-borders/30">
-        <div className="max-w-[1280px] mx-auto px-6 md:px-20 text-center relative z-10">
-          <span className="text-primary text-xs uppercase tracking-wider font-bold block mb-3">
-            Our Story
-          </span>
-          <h1 className="font-heading font-bold text-4xl sm:text-5xl text-dark-navy mb-4">
-            About SmileCare Pro
-          </h1>
-          <p className="text-light-text text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-            Delivering pain-free, world-class dental treatments in a state-of-the-art sterile clinic. Registered PMC facility in Karachi.
-          </p>
-        </div>
-      </section>
-
-      {/* Main Clinic Mission & Values */}
-      <section className="py-24 bg-white">
-        <div className="max-w-[1280px] mx-auto px-6 md:px-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left Text */}
-          <div className="flex flex-col gap-6 lg:gap-8">
-            <FadeIn>
-              <h2 className="font-heading font-bold text-3xl sm:text-4xl text-dark-navy leading-tight">
-                Our Mission: Restoring Health, One Smile at a Time
-              </h2>
-              <p className="text-light-text text-sm sm:text-base leading-relaxed mt-4">
-                SmileCare Pro was founded to challenge the traditional, anxiety-inducing dental experience. We believe that visits to the dentist should feel comfortable, transparent, and entirely pain-free.
-              </p>
-              <p className="text-light-text text-sm sm:text-base leading-relaxed mt-4">
-                By investing in cutting-edge diagnostics (like digital 3D scans and laser dentistry) and maintaining a team of highly-specialized consultants, we provide dental care that meets international guidelines right here in Pakistan.
-              </p>
-            </FadeIn>
-
-            {/* Checklist */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-borders/50">
-              {[
-                "100% PMC-Registered Consultants",
-                "WHO Class B Autoclave Sterility",
-                "Computerized Pain-Free Sedation",
-                "Transparent, Upfront Treatment Costs",
-              ].map((item, idx) => (
-                <div key={idx} className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                    <Check className="w-3.5 h-3.5" />
-                  </div>
-                  <span className="font-heading font-semibold text-sm text-dark-navy">
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right Image */}
-          <div className="relative aspect-[4/3] rounded-[24px] overflow-hidden border border-borders shadow-2xl bg-slate-100">
-            <Image
-              src="/images/clinic_interior.png"
-              alt="Inside SmileCare Pro Clinic"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Core Values Section */}
-      <section className="py-24 bg-[#FAFCFD] border-y border-borders/30">
-        <div className="max-w-[1280px] mx-auto px-6 md:px-20">
-          <div className="text-center mb-16 max-w-xl mx-auto">
-            <span className="text-primary text-xs uppercase tracking-wider font-bold block mb-3">
-              Our Principles
-            </span>
-            <h2 className="font-heading font-bold text-3xl sm:text-4xl text-dark-navy mb-4">
-              The Values That Guide Us
-            </h2>
-            <p className="text-light-text text-sm sm:text-base leading-relaxed">
-              We hold ourselves to the highest standards of safety, quality, and clinical ethics in everything we do.
+    <>
+      {/* Header */}
+      <section className="bg-[#020817] pt-32 pb-20">
+        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
+          <div>
+            <span className="eyebrow">About Us</span>
+            <h1 className="heading-xl text-white mb-5">
+              Built on Trust.<br />
+              <span className="text-gradient">Driven by Excellence.</span>
+            </h1>
+            <p className="text-[#94A3B8] text-[17px] leading-relaxed max-w-md">
+              SmileCare Pro was founded in 2009 with a single belief: that world-class dental care should be accessible, transparent, and completely free of anxiety.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Value 1 */}
-            <div className="bg-white border border-borders p-8 rounded-2xl shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-300">
-              <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
-                <ShieldCheck className="w-6 h-6" />
+          {/* Stats row */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 lg:gap-8 pb-1">
+            {STATS.map((s) => (
+              <div key={s.label} className="border-l border-white/10 pl-4">
+                <div className="font-heading font-bold text-white text-2xl">{s.value}</div>
+                <div className="text-[#475569] text-xs mt-1">{s.label}</div>
               </div>
-              <h3 className="font-heading font-bold text-lg text-dark-navy mb-3">
-                Unmatched Sterilization
-              </h3>
-              <p className="text-light-text text-sm leading-relaxed">
-                We implement a strict Class-B vacuum autoclave protocol. Every medical instrument is sealed in sterile packets and opened only in your presence.
-              </p>
-            </div>
-
-            {/* Value 2 */}
-            <div className="bg-white border border-borders p-8 rounded-2xl shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-300">
-              <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
-                <Heart className="w-6 h-6" />
-              </div>
-              <h3 className="font-heading font-bold text-lg text-dark-navy mb-3">
-                Patient-First Comfort
-              </h3>
-              <p className="text-light-text text-sm leading-relaxed">
-                From luxury wait lobbies to dental chairs equipped with entertainment options, we aim to eliminate dental anxiety and ensure total physical comfort.
-              </p>
-            </div>
-
-            {/* Value 3 */}
-            <div className="bg-white border border-borders p-8 rounded-2xl shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-300">
-              <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
-                <Award className="w-6 h-6" />
-              </div>
-              <h3 className="font-heading font-bold text-lg text-dark-navy mb-3">
-                Certified Clinical Talent
-              </h3>
-              <p className="text-light-text text-sm leading-relaxed">
-                We do not hire junior operators to perform critical procedures. All specialized treatments are executed exclusively by PMC-certified consultants.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Conversion Banner Section */}
-      <section className="py-24 bg-dark-navy relative overflow-hidden text-white">
-        <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(#FAFCFD_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
-        <div className="max-w-[1280px] mx-auto px-6 md:px-20 text-center relative z-10 flex flex-col items-center gap-6">
-          <h2 className="font-heading font-bold text-3xl sm:text-4xl leading-tight max-w-2xl">
-            Experience the Next Level of Healthcare Dentistry
-          </h2>
-          <p className="text-slate-400 text-sm sm:text-base max-w-xl leading-relaxed">
-            Reserve your consultation with our senior dental specialists today and start your journey towards a healthier, brighter smile.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center gap-4 mt-4 w-full sm:w-auto">
-            <Link
-              href="/contact#appointment"
-              className="px-8 py-3.5 bg-primary text-white text-center font-sans text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all w-full sm:w-auto"
-            >
-              Book Online Appointment
+      {/* Values */}
+      <section className="section bg-white">
+        <div className="container mx-auto">
+          <FadeIn>
+            <span className="eyebrow">Our Principles</span>
+            <h2 className="heading-lg text-[#0F172A] mb-12 max-w-lg">
+              What We Stand For.
+            </h2>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E2E8F0] border border-[#E2E8F0] rounded-xl overflow-hidden">
+            {VALUES.map((v) => (
+              <FadeIn key={v.num}>
+                <div className="bg-white p-8 md:p-10 h-full hover:bg-[#F8FAFC] transition-colors">
+                  <div className="text-[#06B6D4] font-heading font-bold text-sm mb-4">{v.num}</div>
+                  <h3 className="font-heading font-bold text-[#0F172A] text-lg mb-3">{v.title}</h3>
+                  <p className="text-[#64748B] text-sm leading-relaxed">{v.desc}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section className="section bg-[#F8FAFC]">
+        <div className="container mx-auto">
+          <FadeIn className="mb-12">
+            <span className="eyebrow">The Team</span>
+            <h2 className="heading-lg text-[#0F172A]">
+              Meet the Consultants.
+            </h2>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {TEAM.map((doctor) => (
+              <FadeIn key={doctor.name}>
+                <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden flex flex-col sm:flex-row hover:border-[#06B6D4]/30 hover:shadow-sm transition-all">
+                  <div className="relative w-full sm:w-[180px] aspect-[4/3] sm:aspect-auto shrink-0">
+                    <Image
+                      src={doctor.img}
+                      alt={doctor.name}
+                      fill
+                      sizes="180px"
+                      className="object-cover object-top"
+                    />
+                  </div>
+                  <div className="p-6 flex flex-col justify-center gap-1">
+                    <h3 className="font-heading font-bold text-[#0F172A] text-lg">{doctor.name}</h3>
+                    <p className="text-[#06B6D4] text-sm font-medium">{doctor.role}</p>
+                    <p className="text-[#94A3B8] text-xs mt-1">{doctor.credentials}</p>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Clinic Interior */}
+      <section className="section bg-white">
+        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <FadeIn>
+            <span className="eyebrow">Our Facility</span>
+            <h2 className="heading-lg text-[#0F172A] mb-5">
+              A Clinic Designed<br />for Your Comfort.
+            </h2>
+            <p className="text-[#64748B] text-[16px] leading-relaxed mb-6">
+              From the waiting area to the treatment chair, every corner of SmileCare Pro has been designed to reduce anxiety and elevate the experience.
+            </p>
+            <ul className="space-y-3 mb-8">
+              {[
+                "Private treatment rooms",
+                "Digital X-ray (80% less radiation)",
+                "Class B autoclave sterilisation",
+                "Intraoral camera consultations",
+              ].map((pt) => (
+                <li key={pt} className="flex items-center gap-3 text-[#334155] text-sm">
+                  <CheckCircle2 className="w-4 h-4 text-[#06B6D4] shrink-0" />
+                  {pt}
+                </li>
+              ))}
+            </ul>
+            <Link href="/gallery" className="btn-ghost-dark">
+              View full gallery <ArrowRight className="w-4 h-4" />
             </Link>
-            <a
-              href="https://wa.me/923001234567"
-              className="px-8 py-3.5 bg-[#25D366] text-white text-center font-sans text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all w-full sm:w-auto flex items-center justify-center gap-2"
-            >
-              Chat on WhatsApp <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
+          </FadeIn>
+          <FadeIn>
+            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
+              <Image
+                src="/images/clinic_reception.png"
+                alt="SmileCare Pro clinic reception"
+                fill
+                sizes="(max-width: 1024px) 100vw, 500px"
+                className="object-cover"
+              />
+            </div>
+          </FadeIn>
         </div>
       </section>
-    </div>
+
+      {/* CTA */}
+      <section className="bg-dark-section py-24">
+        <div className="container mx-auto text-center">
+          <FadeIn>
+            <h2 className="font-heading font-bold text-white text-3xl md:text-4xl tracking-tight mb-4">
+              Ready to Meet the Team?
+            </h2>
+            <p className="text-[#94A3B8] text-[16px] mb-8 max-w-sm mx-auto">
+              Book a free consultation and see the clinic for yourself.
+            </p>
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary mx-auto">
+              Book on WhatsApp <ArrowRight className="w-4 h-4" />
+            </a>
+          </FadeIn>
+        </div>
+      </section>
+    </>
   );
 }

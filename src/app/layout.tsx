@@ -6,44 +6,42 @@ import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 
 const inter = Inter({
-  variable: "--font-inter",
   subsets: ["latin"],
+  variable: "--font-inter",
   display: "swap",
 });
 
 const manrope = Manrope({
-  variable: "--font-manrope",
   subsets: ["latin"],
+  variable: "--font-manrope",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "SmileCare Pro | Premium Dental Care Clinic",
-  description: "Exceptional dental care for every smile. Experience premium treatments including dental implants, cosmetic dentistry, braces, and emergency dental care.",
-  metadataBase: new URL("https://smilecarepro.pk"),
-  alternates: {
-    canonical: "/",
+  title: {
+    default: "SmileCare Pro | Premium Dental Clinic in Karachi",
+    template: "%s | SmileCare Pro",
+  },
+  description:
+    "Karachi's trusted dental clinic for teeth whitening, implants, braces, veneers, and more. PMC certified. Book instantly on WhatsApp.",
+  keywords: ["dental clinic Karachi", "teeth whitening Karachi", "dental implants Pakistan", "PMC dentist"],
+  openGraph: {
+    title: "SmileCare Pro | Premium Dental Clinic in Karachi",
+    description: "Karachi's trusted dental clinic. Book your appointment on WhatsApp.",
+    type: "website",
+    locale: "en_PK",
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${manrope.variable} h-full antialiased scroll-smooth`}
-    >
-      <body className="min-h-full flex flex-col bg-[#FAFCFD] text-[#1E293B]">
+    <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
+      <body>
         <Navbar />
-        <main className="flex-grow">{children}</main>
+        <main>{children}</main>
         <Footer />
         <FloatingActions />
       </body>
     </html>
   );
 }
-
-

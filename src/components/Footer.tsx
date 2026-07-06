@@ -1,142 +1,96 @@
 import Link from "next/link";
-import { Mail, Phone, MapPin } from "lucide-react";
+
+const WA_LINK =
+  "https://wa.me/923197301342?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20SmileCare%20Pro.";
+
+const LINKS = [
+  { label: "Services", href: "/services" },
+  { label: "Gallery",  href: "/gallery" },
+  { label: "About",    href: "/about" },
+  { label: "Contact",  href: "/contact" },
+];
 
 export default function Footer() {
   return (
-    <footer className="bg-dark-navy text-white pt-20 pb-10 border-t border-white/5">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
-        {/* Column 1: Clinic Info */}
-        <div className="flex flex-col gap-6">
-          <div className="font-heading font-bold text-2xl tracking-tight text-white flex items-center gap-1.5">
-            <span className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white text-lg font-bold shadow-md shadow-primary/20">
-              S
-            </span>
-            SmileCare<span className="text-accent">Pro</span>
-          </div>
-          <p className="text-light-text text-sm leading-relaxed text-slate-400">
-            A premium, conversion-focused dental clinic delivering world-class dental care. Experience painless procedures, modern equipment, and highly certified specialists in Pakistan.
-          </p>
-          <div className="flex items-center gap-4">
-            <a href="https://facebook.com" className="p-2 rounded-lg bg-slate-800 hover:bg-primary hover:-translate-y-1 transition-all duration-300 text-slate-400 hover:text-white" aria-label="Facebook">
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
-            </a>
-            <a href="https://instagram.com" className="p-2.5 rounded-lg bg-slate-800 hover:bg-primary hover:-translate-y-1 transition-all duration-300 text-slate-400 hover:text-white" aria-label="Instagram">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-              </svg>
-            </a>
-            <a href="https://twitter.com" className="p-2.5 rounded-lg bg-slate-800 hover:bg-primary hover:-translate-y-1 transition-all duration-300 text-slate-400 hover:text-white" aria-label="Twitter">
-              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
-            </a>
-            <a href="https://linkedin.com" className="p-2 rounded-lg bg-slate-800 hover:bg-primary hover:-translate-y-1 transition-all duration-300 text-slate-400 hover:text-white" aria-label="LinkedIn">
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
-            </a>
-          </div>
-        </div>
+    <footer className="bg-[#020817] border-t border-white/8">
+      <div className="container mx-auto py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
 
-        {/* Column 2: Services */}
-        <div className="flex flex-col gap-5">
-          <h3 className="font-heading font-semibold text-base text-white tracking-wider uppercase">Our Services</h3>
-          <ul className="flex flex-col gap-3">
-            {[
-              { name: "Teeth Whitening", href: "/services/teeth-whitening" },
-              { name: "Dental Implants", href: "/services/dental-implants" },
-              { name: "Root Canal Treatment", href: "/services/root-canal" },
-              { name: "Orthodontics (Braces)", href: "/services/braces" },
-              { name: "Porcelain Veneers", href: "/services/veneers" },
-              { name: "Dental Crowns", href: "/services/crowns" },
-              { name: "Emergency Dentistry", href: "/services/emergency-dentistry" },
-              { name: "Children's Dentistry", href: "/services/children-dentistry" },
-            ].map((service) => (
-              <li key={service.name}>
-                <Link
-                  href={service.href}
-                  className="text-slate-400 hover:text-accent text-sm transition-colors duration-250 flex items-center gap-1 group"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-accent transition-colors" />
-                  {service.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Column 3: Quick Links */}
-        <div className="flex flex-col gap-5">
-          <h3 className="font-heading font-semibold text-base text-white tracking-wider uppercase">Quick Links</h3>
-          <ul className="flex flex-col gap-3">
-            {[
-              { name: "Home", href: "/" },
-              { name: "About Clinic", href: "/about" },
-              { name: "Meet the Dentists", href: "/meet-the-dentists" },
-              { name: "Smile Gallery", href: "/gallery" },
-              { name: "Before & After", href: "/smile-transformations" },
-              { name: "Transparent Pricing", href: "/pricing" },
-              { name: "Dental Blog", href: "/blog" },
-              { name: "Frequently Asked Questions", href: "/faq" },
-              { name: "Contact & Booking", href: "/contact" },
-            ].map((link) => (
-              <li key={link.name}>
-                <Link
-                  href={link.href}
-                  className="text-slate-400 hover:text-accent text-sm transition-colors duration-250"
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Column 4: Contact Details */}
-        <div className="flex flex-col gap-5">
-          <h3 className="font-heading font-semibold text-base text-white tracking-wider uppercase">Get In Touch</h3>
-          <p className="text-slate-400 text-sm leading-relaxed mb-1">
-            Have questions or want to request an appointment? Reach out to our front desk.
-          </p>
-          <ul className="flex flex-col gap-4">
-            <li className="flex items-start gap-3">
-              <MapPin className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-              <span className="text-slate-400 text-sm leading-relaxed">
-                Building 42-C, 10th Commercial Lane, DHA Phase 5, Karachi, Pakistan
+          {/* Brand */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-2.5">
+              <svg width="20" height="24" viewBox="0 0 20 24" fill="none" aria-hidden="true">
+                <path d="M10 1C6.8 1 4 3.9 4 7.5c0 1.1.2 2.3.6 3.5L6.5 22h2l1.5-4.5L11.5 22h2l1.9-11C15.8 9.8 16 8.6 16 7.5 16 3.9 13.2 1 10 1z" fill="#F1F5F9"/>
+                <path d="M7.5 10.5 Q10 13 12.5 10.5" stroke="#06B6D4" strokeWidth="1.4" strokeLinecap="round" fill="none"/>
+              </svg>
+              <span className="font-heading font-bold text-[16px] text-white tracking-tight">
+                SmileCare<span className="text-[#06B6D4]">Pro</span>
               </span>
-            </li>
-            <li className="flex items-center gap-3">
-              <Phone className="w-5 h-5 text-accent shrink-0" />
-              <a href="tel:+923001234567" className="text-slate-400 hover:text-white text-sm transition-colors">
-                +92 300 1234567
-              </a>
-            </li>
-            <li className="flex items-center gap-3">
-              <Mail className="w-5 h-5 text-accent shrink-0" />
-              <a href="mailto:info@smilecarepro.pk" className="text-slate-400 hover:text-white text-sm transition-colors">
-                info@smilecarepro.pk
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+            </div>
+            <p className="text-[#94A3B8] text-sm leading-relaxed max-w-[240px]">
+              PMC certified dental clinic serving Karachi since 2009. Your comfort is our standard.
+            </p>
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#06B6D4] hover:text-white transition-colors"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.528 5.847L.057 23.5l5.797-1.522A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.89 9.89 0 01-5.031-1.372l-.361-.214-3.741.981.999-3.648-.235-.374A9.865 9.865 0 012.1 12C2.1 6.525 6.525 2.1 12 2.1S21.9 6.525 21.9 12 17.475 21.9 12 21.9z"/>
+              </svg>
+              Chat on WhatsApp
+            </a>
+          </div>
 
-      {/* Bottom Legal Section */}
-      <div className="max-w-[1280px] mx-auto px-6 md:px-20 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-slate-500 text-xs text-center md:text-left">
-          &copy; {new Date().getFullYear()} SmileCare Pro. All rights reserved. Registered PMC/PMDC Dental Facility.
-        </p>
-        <div className="flex items-center gap-6">
-          <Link href="/privacy-policy" className="text-slate-500 hover:text-slate-400 text-xs transition-colors">
-            Privacy Policy
-          </Link>
-          <Link href="/terms" className="text-slate-500 hover:text-slate-400 text-xs transition-colors">
-            Terms of Service
-          </Link>
+          {/* Navigation */}
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#475569] mb-5">
+              Navigation
+            </p>
+            <ul className="space-y-3">
+              {LINKS.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="text-[#94A3B8] hover:text-white text-sm font-medium transition-colors"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.15em] text-[#475569] mb-5">
+              Visit Us
+            </p>
+            <address className="not-italic space-y-3 text-[#94A3B8] text-sm">
+              <p>Block 10, Main Khayaban-e-Hafiz<br />DHA Phase 5, Karachi, Pakistan</p>
+              <p>
+                <a href="tel:+923197301342" className="hover:text-white transition-colors">
+                  +92 319 7301342
+                </a>
+              </p>
+              <p>
+                Mon – Sat: 11:00 AM – 8:00 PM<br />
+                Sunday: 12:00 PM – 5:00 PM
+              </p>
+            </address>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="mt-14 pt-6 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[#475569] text-xs">
+            © {new Date().getFullYear()} SmileCare Pro. All rights reserved.
+          </p>
+          <p className="text-[#334155] text-xs">
+            PMC Registered · ISO 9001:2015 Certified
+          </p>
         </div>
       </div>
     </footer>

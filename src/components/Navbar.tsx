@@ -3,174 +3,151 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ArrowRight } from "lucide-react";
 
-// Simplify desktop links to reduce clutter, keeping all for mobile
-const desktopLinks = [
-  { name: "Home", href: "/" },
+export const WA_LINK =
+  "https://wa.me/923197301342?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20SmileCare%20Pro.";
+
+const NAV_LINKS = [
+  { name: "Home",     href: "/" },
   { name: "Services", href: "/services" },
-  { name: "Transformations", href: "/smile-transformations" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "Contact", href: "/contact" },
+  { name: "Gallery",  href: "/gallery" },
+  { name: "About",    href: "/about" },
+  { name: "Contact",  href: "/contact" },
 ];
 
-const mobileLinks = [
-  { name: "Home", href: "/" },
-  { name: "Services", href: "/services" },
-  { name: "About Clinic", href: "/about" },
-  { name: "Gallery", href: "/gallery" },
-  { name: "Transformations", href: "/smile-transformations" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "Blog", href: "/blog" },
-  { name: "FAQ", href: "/faq" },
-  { name: "Contact", href: "/contact" },
-];
+function ToothIcon({ color = "#FFFFFF" }: { color?: string }) {
+  return (
+    <svg width="20" height="24" viewBox="0 0 20 24" fill="none" aria-hidden="true">
+      <path
+        d="M10 1C6.8 1 4 3.9 4 7.5c0 1.1.2 2.3.6 3.5L6.5 22h2l1.5-4.5L11.5 22h2l1.9-11C15.8 9.8 16 8.6 16 7.5 16 3.9 13.2 1 10 1z"
+        fill={color}
+      />
+      <path
+        d="M7.5 10.5 Q10 13 12.5 10.5"
+        stroke="#06B6D4"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        fill="none"
+      />
+    </svg>
+  );
+}
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
+  const [scrolled, setScrolled]     = useState(false);
+  const [menuOpen, setMenuOpen]     = useState(false);
+  const pathname                    = usePathname();
+  const isHome                      = pathname === "/";
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 56);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on path change
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [pathname]);
+  useEffect(() => { setMenuOpen(false); }, [pathname]);
+
+  // Transparent over dark hero only on home; white everywhere else
+  const transparent = isHome && !scrolled && !menuOpen;
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? "bg-white/90 backdrop-blur-md shadow-sm py-3.5 border-b border-borders/40"
-            : "bg-transparent py-6"
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+          transparent
+            ? "bg-transparent"
+            : "bg-white/95 backdrop-blur-lg border-b border-[#E2E8F0]"
         }`}
       >
-        <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-20 flex items-center justify-between">
-          {/* Logo Left */}
-          <Link href="/" className="flex items-center gap-2 group focus:outline-none">
-            <motion.div
-              animate={{ scale: isScrolled ? 0.95 : 1 }}
-              transition={{ duration: 0.3 }}
-              className="font-heading font-bold text-xl lg:text-2xl tracking-tight text-dark-navy flex items-center gap-1.5"
+        <div className="container mx-auto flex h-16 items-center justify-between">
+
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2.5 focus:outline-none" aria-label="SmileCare Pro home">
+            <ToothIcon color={transparent ? "#FFFFFF" : "#0F172A"} />
+            <span
+              className={`font-heading font-bold text-[16px] tracking-tight transition-colors ${
+                transparent ? "text-white" : "text-[#0F172A]"
+              }`}
             >
-              <span className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white text-lg font-bold shadow-md shadow-primary/20 transition-transform duration-300 group-hover:rotate-6">
-                S
-              </span>
-              SmileCare<span className="text-primary">Pro</span>
-            </motion.div>
+              SmileCare<span className="text-[#06B6D4]">Pro</span>
+            </span>
           </Link>
 
-          {/* Navigation Center (Clean, spacious, 5 links) */}
-          <nav className="hidden lg:flex items-center gap-10">
-            {desktopLinks.map((link) => {
-              const isActive = pathname === link.href;
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-7" aria-label="Main navigation">
+            {NAV_LINKS.map((link) => {
+              const active = pathname === link.href;
               return (
                 <Link
-                  key={link.name}
+                  key={link.href}
                   href={link.href}
-                  className={`relative font-sans text-[13px] font-semibold uppercase tracking-wider transition-colors duration-300 py-1.5 focus:outline-none focus-visible:text-primary ${
-                    isActive ? "text-primary" : "text-light-text hover:text-dark-navy"
+                  className={`text-[13px] font-semibold tracking-wide transition-colors focus:outline-none ${
+                    transparent
+                      ? active ? "text-white" : "text-white/55 hover:text-white"
+                      : active ? "text-[#0F172A]" : "text-[#64748B] hover:text-[#0F172A]"
                   }`}
                 >
                   {link.name}
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeNavIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary rounded-full"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
                 </Link>
               );
             })}
           </nav>
 
-          {/* Right Side Buttons (Single CTA for premium look) */}
-          <div className="hidden lg:flex items-center gap-6">
-            <Link
-              href="/contact#appointment"
-              className="px-6 py-2.5 bg-primary hover:bg-primary/95 text-white font-sans text-xs font-bold uppercase tracking-wider rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-[2px] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/20"
+          {/* Desktop CTA */}
+          <div className="hidden md:block">
+            <a
+              href={WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#06B6D4] hover:bg-[#0891B2] text-white text-[13px] font-semibold rounded-md transition-colors"
             >
               Book Appointment
-            </Link>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile toggle */}
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-dark-navy hover:text-primary transition-colors focus:outline-none"
-            aria-label="Toggle menu"
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label="Toggle navigation"
+            className={`md:hidden p-2 rounded-md transition-colors ${
+              transparent ? "text-white/70 hover:text-white" : "text-[#64748B] hover:text-[#0F172A]"
+            }`}
           >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </header>
 
-      {/* Mobile Drawer Navigation */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 top-[72px] z-40 bg-white lg:hidden flex flex-col justify-between p-6 border-t border-borders/50 shadow-xl"
+      {/* Mobile Drawer */}
+      <div
+        className={`fixed inset-x-0 top-16 z-40 bg-white border-b border-[#E2E8F0] md:hidden transition-all duration-300 overflow-hidden ${
+          menuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="container mx-auto py-5 flex flex-col gap-0.5">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`py-3.5 text-[15px] font-semibold border-b border-[#E2E8F0] last:border-0 transition-colors ${
+                pathname === link.href ? "text-[#06B6D4]" : "text-[#0F172A]"
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 w-full py-3.5 bg-[#06B6D4] text-white text-[14px] font-semibold rounded-md text-center"
           >
-            <div className="flex flex-col gap-3 overflow-y-auto py-4">
-              {mobileLinks.map((link, idx) => {
-                const isActive = pathname === link.href;
-                return (
-                  <motion.div
-                    key={link.name}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.04 }}
-                  >
-                    <Link
-                      href={link.href}
-                      className={`block font-heading text-base font-bold py-2 border-b border-borders/30 ${
-                        isActive ? "text-primary border-primary/20" : "text-dark-navy"
-                      }`}
-                    >
-                      {link.name}
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            <div className="flex flex-col gap-4 border-t border-borders/60 pt-6 pb-12">
-              <a
-                href="tel:+923001234567"
-                className="flex items-center justify-center gap-3 w-full py-3 bg-[#FAFCFD] border border-borders/80 text-dark-navy font-semibold rounded-xl text-center hover:bg-borders/20 transition-all"
-              >
-                <Phone className="w-5 h-5 text-primary" />
-                <span>+92 300 1234567</span>
-              </a>
-              <Link
-                href="/contact#appointment"
-                className="w-full py-3.5 bg-primary text-white font-semibold rounded-xl text-center shadow-lg shadow-primary/20 hover:bg-primary/95 transition-all"
-              >
-                Book Appointment
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            Book Appointment on WhatsApp
+          </a>
+        </div>
+      </div>
     </>
   );
 }
