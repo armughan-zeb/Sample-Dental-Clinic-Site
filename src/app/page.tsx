@@ -114,18 +114,18 @@ export default function HomePage() {
       <section className="relative bg-[#0A0A0A] flex flex-col overflow-hidden">
         {/* ─── MOBILE LAYOUT ─── */}
         <div className="relative flex flex-col md:hidden">
-          {/* Video thumbnail on mobile — cropped square, prominent */}
-          <div className="relative w-full h-[55vw] max-h-[320px] overflow-hidden">
+          {/* Video — 16:9 box, nothing cropped */}
+          <div className="relative w-full overflow-hidden bg-[#0A0A0A]" style={{ aspectRatio: "16/9" }}>
             <video
               src="/images/Dentist_working_with_patient's_t…_202607062108.mp4"
               autoPlay
               loop
               muted
               playsInline
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-contain"
             />
             {/* Soft bottom fade into dark bg */}
-            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0A0A0A] to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0A0A0A] to-transparent" />
           </div>
 
           {/* Text content below video on mobile */}
