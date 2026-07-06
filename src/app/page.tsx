@@ -113,16 +113,26 @@ export default function HomePage() {
       {/* ── 1. HERO (Live Background Video) ─────────────────────── */}
       <section className="relative bg-[#0A0A0A] flex flex-col overflow-hidden">
         {/* ─── MOBILE LAYOUT ─── */}
-        <div className="relative md:hidden w-full flex flex-col justify-center min-h-[100svh] px-6 pt-24 pb-16 overflow-hidden bg-[#0A0A0A]">
+        <div className="relative md:hidden w-full flex flex-col min-h-[100svh] px-6 pt-32 pb-16 overflow-hidden bg-[#0A0A0A]">
           {/* Decorative Background Elements */}
           <div className="absolute inset-0 z-0">
-            {/* Base dark blue/black gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0A0A0A] via-[#0f1a2e] to-[#0A0A0A]" />
+            {/* Background Image */}
+            <Image
+              src="/images/dentist_doctor.png"
+              alt="Premium Dental Care"
+              fill
+              className="object-cover object-top opacity-50"
+              priority
+            />
+            {/* Dark overlay gradients so text is readable */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/90 to-[#0A0A0A]/20" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/40 to-transparent" />
+            
             {/* Glowing orb */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-64 h-64 bg-[#06B6D4]/20 rounded-full blur-[80px] pointer-events-none" />
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-64 h-64 bg-[#06B6D4]/30 rounded-full blur-[80px] pointer-events-none" />
             {/* Grid pattern overlay */}
             <div
-              className="absolute inset-0 opacity-[0.15] pointer-events-none"
+              className="absolute inset-0 opacity-[0.2] pointer-events-none"
               style={{
                 backgroundImage: "radial-gradient(rgba(255, 255, 255, 1) 1px, transparent 1px)",
                 backgroundSize: "24px 24px",
@@ -130,18 +140,19 @@ export default function HomePage() {
             />
           </div>
 
-          <div className="relative z-10 flex flex-col items-center text-center mt-auto mb-auto">
+          {/* Text positioned higher up */}
+          <div className="relative z-10 flex flex-col items-center text-center mt-4">
             <div className="badge-premium mb-6 animate-fade-in-up text-xs w-fit">
               <CheckCircle2 className="w-3.5 h-3.5 text-[#06B6D4]" />
               PMC Certified · Est. 2009
             </div>
             
-            <h1 className="!text-white font-heading font-extrabold text-[2.75rem] leading-[1.05] tracking-tight mb-5 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+            <h1 className="!text-white font-heading font-black text-[3.2rem] leading-[1] tracking-tighter mb-5 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
               Dental Care<br />
               That <span className="text-gradient">Sets the Standard.</span>
             </h1>
             
-            <p className="text-[#A3A3A3] text-[16px] leading-relaxed max-w-[320px] mb-8 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+            <p className="text-[#A3A3A3] text-[16px] leading-relaxed max-w-[320px] mb-10 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
               World-class treatments, transparent pricing, and zero compromise on your comfort.
             </p>
 
