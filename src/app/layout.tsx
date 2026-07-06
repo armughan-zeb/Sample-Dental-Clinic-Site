@@ -19,15 +19,15 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: {
-    default: "SmileCare Pro | Premium Dental Clinic in Karachi",
+    default: "SmileCare Pro | Premium Dental Clinic in Abbottabad",
     template: "%s | SmileCare Pro",
   },
   description:
-    "Karachi's trusted dental clinic for teeth whitening, implants, braces, veneers, and more. PMC certified. Book instantly on WhatsApp.",
-  keywords: ["dental clinic Karachi", "teeth whitening Karachi", "dental implants Pakistan", "PMC dentist"],
+    "Abbottabad's trusted dental clinic for teeth whitening, implants, braces, veneers, and more. PMC certified. Book instantly on WhatsApp.",
+  keywords: ["dental clinic Abbottabad", "teeth whitening Abbottabad", "dental implants Pakistan", "PMC dentist"],
   openGraph: {
-    title: "SmileCare Pro | Premium Dental Clinic in Karachi",
-    description: "Karachi's trusted dental clinic. Book your appointment on WhatsApp.",
+    title: "SmileCare Pro | Premium Dental Clinic in Abbottabad",
+    description: "Abbottabad's trusted dental clinic. Book your appointment on WhatsApp.",
     type: "website",
     locale: "en_PK",
   },

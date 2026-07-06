@@ -41,13 +41,13 @@ export default function GalleryPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-[#020817] pt-32 pb-20">
+      <section className="bg-[#0A0A0A] pt-48 pb-32">
         <div className="container mx-auto">
           <span className="eyebrow">Gallery</span>
-          <h1 className="heading-xl text-white mb-5">
+          <h1 className="heading-xl !text-white mb-6">
             Inside SmileCare Pro.
           </h1>
-          <p className="text-[#94A3B8] text-[17px] max-w-md leading-relaxed">
+          <p className="text-[#A3A3A3] text-[17px] max-w-md leading-relaxed">
             A look at our facilities, our team, and the results we deliver.
           </p>
         </div>
@@ -56,20 +56,20 @@ export default function GalleryPage() {
       {/* Grid */}
       <section className="section bg-white">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {PHOTOS.map((photo) => (
               <FadeIn key={photo.src} className={photo.span}>
-                <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden group">
+                <div className="relative w-full aspect-[4/3] rounded-[1.5rem] overflow-hidden group shadow-sm ring-1 ring-[#E2E8F0]">
                   <Image
                     src={photo.src}
                     alt={photo.alt}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-[#020817]/0 group-hover:bg-[#020817]/40 transition-all duration-300 flex items-end p-5">
-                    <span className="text-white font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0">
+                  <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/30 transition-all duration-300 flex items-end p-6">
+                    <span className="text-white font-semibold text-[15px] tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0">
                       {photo.caption}
                     </span>
                   </div>
@@ -78,13 +78,13 @@ export default function GalleryPage() {
             ))}
           </div>
 
-          <p className="text-center text-[#94A3B8] text-sm mt-10">
+          <p className="text-center text-[#64748B] text-[15px] mt-16 font-medium">
             More photos available on our{" "}
             <a
               href="https://www.instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#06B6D4] hover:underline"
+              className="text-[#0A0A0A] underline hover:text-[#06B6D4] transition-colors"
             >
               Instagram
             </a>

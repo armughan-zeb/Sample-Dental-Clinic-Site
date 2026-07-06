@@ -78,14 +78,14 @@ export default function ServicesPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-[#020817] pt-32 pb-20">
+      <section className="bg-[#0A0A0A] pt-48 pb-32">
         <div className="container mx-auto">
           <span className="eyebrow">Services</span>
-          <h1 className="heading-xl text-white mb-5 max-w-2xl">
+          <h1 className="heading-xl !text-white mb-6 max-w-2xl">
             Comprehensive Care,<br />
             <span className="text-gradient">Zero Compromise.</span>
           </h1>
-          <p className="text-[#94A3B8] text-[17px] max-w-lg leading-relaxed">
+          <p className="text-[#A3A3A3] text-[17px] max-w-lg leading-relaxed">
             Eight specialties under one PMC-certified roof. Browse treatments below, then book a free consultation on WhatsApp.
           </p>
         </div>
@@ -94,30 +94,30 @@ export default function ServicesPage() {
       {/* Services List */}
       <section className="bg-white section">
         <div className="container mx-auto">
-          <div className="space-y-0 divide-y divide-[#E2E8F0] border border-[#E2E8F0] rounded-xl overflow-hidden">
+          <div className="space-y-0 divide-y divide-[#E2E8F0] border border-[#E2E8F0] rounded-2xl overflow-hidden shadow-sm">
             {SERVICES.map((svc, idx) => (
               <FadeIn key={svc.name}>
-                <div className="p-8 md:p-10 bg-white hover:bg-[#F8FAFC] transition-colors group">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
+                <div className="p-8 md:p-12 bg-white hover:bg-[#F8FAFC] transition-colors group">
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
 
                     {/* Left: Name + tagline */}
-                    <div className="md:col-span-1">
-                      <div className="text-[#06B6D4] text-xs font-bold uppercase tracking-widest mb-2">
+                    <div className="md:col-span-4">
+                      <div className="text-[#06B6D4] text-[11px] font-bold uppercase tracking-[0.2em] mb-3">
                         {String(idx + 1).padStart(2, "0")}
                       </div>
-                      <h2 className="font-heading font-bold text-[#0F172A] text-xl mb-1.5 group-hover:text-[#06B6D4] transition-colors">
+                      <h2 className="font-heading font-bold text-[#0A0A0A] text-2xl mb-2 group-hover:text-[#06B6D4] transition-colors">
                         {svc.name}
                       </h2>
-                      <p className="text-[#64748B] text-sm">{svc.tagline}</p>
+                      <p className="text-[#64748B] text-[15px] font-medium">{svc.tagline}</p>
                     </div>
 
                     {/* Center: Description + details */}
-                    <div className="md:col-span-1">
-                      <p className="text-[#64748B] text-sm leading-relaxed mb-4">{svc.desc}</p>
-                      <ul className="space-y-1.5">
+                    <div className="md:col-span-5">
+                      <p className="text-[#64748B] text-[15px] leading-relaxed mb-6">{svc.desc}</p>
+                      <ul className="space-y-2">
                         {svc.details.map((d) => (
-                          <li key={d} className="flex items-center gap-2 text-[#334155] text-sm">
-                            <span className="w-1 h-1 rounded-full bg-[#06B6D4] shrink-0" />
+                          <li key={d} className="flex items-center gap-3 text-[#334155] text-sm font-medium">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#06B6D4] shrink-0" />
                             {d}
                           </li>
                         ))}
@@ -125,19 +125,19 @@ export default function ServicesPage() {
                     </div>
 
                     {/* Right: Price + CTA */}
-                    <div className="md:col-span-1 flex flex-col md:items-end justify-between gap-5">
-                      <div>
+                    <div className="md:col-span-3 flex flex-col md:items-end justify-between gap-6 border-t md:border-t-0 md:border-l border-[#E2E8F0] pt-6 md:pt-0 md:pl-8">
+                      <div className="md:text-right">
                         <div className="text-[11px] text-[#94A3B8] uppercase tracking-wider font-semibold mb-1">Starting from</div>
-                        <div className="font-heading font-bold text-[#0F172A] text-lg">{svc.from}</div>
-                        <div className="text-[#94A3B8] text-xs mt-1">Duration: {svc.duration}</div>
+                        <div className="font-heading font-bold text-[#0A0A0A] text-xl">{svc.from}</div>
+                        <div className="text-[#94A3B8] text-xs font-medium mt-1">Duration: {svc.duration}</div>
                       </div>
                       <a
                         href={WA_LINK}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-primary self-start md:self-auto"
+                        className="btn-primary-dark self-start md:self-end"
                       >
-                        Book Now <ArrowRight className="w-3.5 h-3.5" />
+                        Book Now
                       </a>
                     </div>
                   </div>
@@ -147,10 +147,10 @@ export default function ServicesPage() {
           </div>
 
           {/* Insurance note */}
-          <div className="mt-12 p-6 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="mt-16 p-8 rounded-2xl border border-[#E2E8F0] bg-[#F8FAFC] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div>
-              <p className="font-semibold text-[#0F172A] text-sm">Insurance & Installment Plans</p>
-              <p className="text-[#64748B] text-sm mt-1">
+              <p className="font-heading font-bold text-[#0A0A0A] text-lg">Insurance & Installment Plans</p>
+              <p className="text-[#64748B] text-[15px] mt-1 max-w-2xl">
                 We partner with Jubilee Life, EFU Allianz, and Adamjee Insurance. 0% installment plans available on major treatments.
               </p>
             </div>

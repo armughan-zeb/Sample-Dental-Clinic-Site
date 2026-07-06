@@ -20,7 +20,7 @@ const TEAM = [
     name: "Dr. Sarah Malik",
     role: "Implantologist & Cosmetic Surgeon",
     credentials: "BDS, MDS Implantology · PMC Reg. 67890",
-    img: "/images/dentist_doctor.png",
+    img: "/images/female_dentist.png",
   },
 ];
 
@@ -58,25 +58,25 @@ export default function AboutPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-[#020817] pt-32 pb-20">
-        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
+      <section className="bg-[#0A0A0A] pt-48 pb-32">
+        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-end">
           <div>
             <span className="eyebrow">About Us</span>
-            <h1 className="heading-xl text-white mb-5">
+            <h1 className="heading-xl !text-white mb-6">
               Built on Trust.<br />
               <span className="text-gradient">Driven by Excellence.</span>
             </h1>
-            <p className="text-[#94A3B8] text-[17px] leading-relaxed max-w-md">
+            <p className="text-[#A3A3A3] text-[17px] leading-relaxed max-w-md">
               SmileCare Pro was founded in 2009 with a single belief: that world-class dental care should be accessible, transparent, and completely free of anxiety.
             </p>
           </div>
 
           {/* Stats row */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 lg:gap-8 pb-1">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 lg:gap-8 pb-2">
             {STATS.map((s) => (
-              <div key={s.label} className="border-l border-white/10 pl-4">
-                <div className="font-heading font-bold text-white text-2xl">{s.value}</div>
-                <div className="text-[#475569] text-xs mt-1">{s.label}</div>
+              <div key={s.label} className="border-l border-white/10 pl-5">
+                <div className="font-heading font-bold !text-white text-3xl">{s.value}</div>
+                <div className="text-[#737373] text-[11px] font-semibold uppercase tracking-wider mt-1">{s.label}</div>
               </div>
             ))}
           </div>
@@ -93,13 +93,13 @@ export default function AboutPage() {
             </h2>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E2E8F0] border border-[#E2E8F0] rounded-xl overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E2E8F0] border border-[#E2E8F0] rounded-2xl overflow-hidden shadow-sm">
             {VALUES.map((v) => (
               <FadeIn key={v.num}>
-                <div className="bg-white p-8 md:p-10 h-full hover:bg-[#F8FAFC] transition-colors">
-                  <div className="text-[#06B6D4] font-heading font-bold text-sm mb-4">{v.num}</div>
-                  <h3 className="font-heading font-bold text-[#0F172A] text-lg mb-3">{v.title}</h3>
-                  <p className="text-[#64748B] text-sm leading-relaxed">{v.desc}</p>
+                <div className="bg-white p-10 md:p-12 h-full hover:bg-[#F8FAFC] transition-colors">
+                  <div className="text-[#06B6D4] font-heading font-bold text-sm mb-5">{v.num}</div>
+                  <h3 className="font-heading font-bold text-[#0A0A0A] text-xl mb-3">{v.title}</h3>
+                  <p className="text-[#64748B] text-[15px] leading-relaxed">{v.desc}</p>
                 </div>
               </FadeIn>
             ))}
@@ -117,23 +117,23 @@ export default function AboutPage() {
             </h2>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {TEAM.map((doctor) => (
               <FadeIn key={doctor.name}>
-                <div className="bg-white border border-[#E2E8F0] rounded-xl overflow-hidden flex flex-col sm:flex-row hover:border-[#06B6D4]/30 hover:shadow-sm transition-all">
-                  <div className="relative w-full sm:w-[180px] aspect-[4/3] sm:aspect-auto shrink-0">
+                <div className="card overflow-hidden flex flex-col sm:flex-row group">
+                  <div className="relative w-full sm:w-[220px] aspect-[4/5] sm:aspect-auto shrink-0 overflow-hidden">
                     <Image
                       src={doctor.img}
                       alt={doctor.name}
                       fill
-                      sizes="180px"
-                      className="object-cover object-top"
+                      sizes="220px"
+                      className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <div className="p-6 flex flex-col justify-center gap-1">
-                    <h3 className="font-heading font-bold text-[#0F172A] text-lg">{doctor.name}</h3>
-                    <p className="text-[#06B6D4] text-sm font-medium">{doctor.role}</p>
-                    <p className="text-[#94A3B8] text-xs mt-1">{doctor.credentials}</p>
+                  <div className="p-8 flex flex-col justify-center gap-2">
+                    <h3 className="font-heading font-bold text-[#0A0A0A] text-xl">{doctor.name}</h3>
+                    <p className="text-[#06B6D4] text-[15px] font-semibold">{doctor.role}</p>
+                    <p className="text-[#64748B] text-sm mt-2 leading-relaxed">{doctor.credentials}</p>
                   </div>
                 </div>
               </FadeIn>
@@ -144,24 +144,24 @@ export default function AboutPage() {
 
       {/* Clinic Interior */}
       <section className="section bg-white">
-        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           <FadeIn>
-            <span className="eyebrow">Our Facility</span>
+            <span className="eyebrow">Our Clinic</span>
             <h2 className="heading-lg text-[#0F172A] mb-5">
-              A Clinic Designed<br />for Your Comfort.
+              15 Years of Clinical<br />Excellence in Abbottabad.
             </h2>
-            <p className="text-[#64748B] text-[16px] leading-relaxed mb-6">
-              From the waiting area to the treatment chair, every corner of SmileCare Pro has been designed to reduce anxiety and elevate the experience.
+            <p className="text-[#64748B] text-[16px] leading-relaxed mb-8">
+              Founded in 2009, SmileCare Pro has grown into one of Abbottabad's most trusted dental practices — built on a foundation of medical rigour, patient empathy, and zero shortcuts.
             </p>
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-4 mb-10">
               {[
                 "Private treatment rooms",
                 "Digital X-ray (80% less radiation)",
                 "Class B autoclave sterilisation",
                 "Intraoral camera consultations",
               ].map((pt) => (
-                <li key={pt} className="flex items-center gap-3 text-[#334155] text-sm">
-                  <CheckCircle2 className="w-4 h-4 text-[#06B6D4] shrink-0" />
+                <li key={pt} className="flex items-center gap-3 text-[#334155] text-[15px] font-medium">
+                  <CheckCircle2 className="w-5 h-5 text-[#06B6D4] shrink-0" />
                   {pt}
                 </li>
               ))}
@@ -171,7 +171,7 @@ export default function AboutPage() {
             </Link>
           </FadeIn>
           <FadeIn>
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
+            <div className="relative w-full aspect-[4/5] rounded-[2rem] overflow-hidden shadow-sm ring-1 ring-[#E2E8F0]">
               <Image
                 src="/images/clinic_reception.png"
                 alt="SmileCare Pro clinic reception"
@@ -185,13 +185,13 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-dark-section py-24">
+      <section className="bg-dark-section py-32 border-t border-white/10">
         <div className="container mx-auto text-center">
           <FadeIn>
-            <h2 className="font-heading font-bold text-white text-3xl md:text-4xl tracking-tight mb-4">
+            <h2 className="heading-lg !text-white mb-5">
               Ready to Meet the Team?
             </h2>
-            <p className="text-[#94A3B8] text-[16px] mb-8 max-w-sm mx-auto">
+            <p className="text-[#A3A3A3] text-[17px] mb-10 max-w-sm mx-auto leading-relaxed">
               Book a free consultation and see the clinic for yourself.
             </p>
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary mx-auto">

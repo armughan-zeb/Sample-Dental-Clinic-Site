@@ -18,17 +18,17 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2.5">
-              <svg width="20" height="24" viewBox="0 0 20 24" fill="none" aria-hidden="true">
+            <div className="flex items-center gap-3">
+              <svg width="24" height="28" viewBox="0 0 20 24" fill="none" aria-hidden="true" className="shrink-0">
                 <path d="M10 1C6.8 1 4 3.9 4 7.5c0 1.1.2 2.3.6 3.5L6.5 22h2l1.5-4.5L11.5 22h2l1.9-11C15.8 9.8 16 8.6 16 7.5 16 3.9 13.2 1 10 1z" fill="#F1F5F9"/>
                 <path d="M7.5 10.5 Q10 13 12.5 10.5" stroke="#06B6D4" strokeWidth="1.4" strokeLinecap="round" fill="none"/>
               </svg>
-              <span className="font-heading font-bold text-[16px] text-white tracking-tight">
+              <span className="font-heading font-extrabold text-[20px] text-white tracking-tight">
                 SmileCare<span className="text-[#06B6D4]">Pro</span>
               </span>
             </div>
             <p className="text-[#94A3B8] text-sm leading-relaxed max-w-[240px]">
-              PMC certified dental clinic serving Karachi since 2009. Your comfort is our standard.
+              PMC certified dental clinic serving Mandian, Abbottabad since 2009. Your comfort is our standard.
             </p>
             <a
               href={WA_LINK}

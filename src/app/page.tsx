@@ -7,7 +7,7 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import FAQAccordion from "@/components/FAQAccordion";
 
 export const metadata: Metadata = {
-  title: "SmileCare Pro | Premium Dental Clinic in Karachi",
+  title: "SmileCare Pro | Premium Dental Clinic in Abbottabad",
 };
 
 const WA_LINK =
@@ -51,7 +51,7 @@ const TESTIMONIALS = [
     quote:
       "After years of being embarrassed by my smile, SmileCare Pro gave me veneers that changed my life. The team was professional from start to finish.",
     name: "Ayesha R.",
-    title: "Marketing Director, Karachi",
+    title: "Marketing Director, Abbottabad",
     rating: 5,
   },
   {
@@ -65,7 +65,7 @@ const TESTIMONIALS = [
     quote:
       "My kids actually look forward to their dental appointments here. The staff is warm, patient, and incredibly skilled.",
     name: "Fatima K.",
-    title: "Teacher, DHA Karachi",
+    title: "Teacher, Abbottabad",
     rating: 5,
   },
 ];
@@ -111,7 +111,7 @@ export default function HomePage() {
   return (
     <>
       {/* ── 1. HERO ─────────────────────────────────────────────── */}
-      <section className="min-h-screen bg-[#020817] flex items-center relative overflow-hidden pt-16">
+      <section className="bg-[#0A0A0A] relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
         {/* Subtle grid */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -121,30 +121,29 @@ export default function HomePage() {
             backgroundSize: "64px 64px",
           }}
         />
-        {/* Accent glow — top right, very subtle */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#06B6D4]/5 rounded-full blur-[120px] pointer-events-none" />
+        {/* Accent glow — top right, extremely subtle */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#06B6D4]/3 rounded-full blur-[140px] pointer-events-none" />
 
-        <div className="container mx-auto py-24 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center w-full">
+        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10 w-full">
 
           {/* Left */}
           <div className="flex flex-col">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 mb-8 self-start px-3 py-1.5 rounded-full border border-white/10 text-white/40 text-[11px] font-medium tracking-wide">
+            {/* Premium Badge */}
+            <div className="badge-premium mb-8 self-start">
               <span className="w-1.5 h-1.5 rounded-full bg-[#06B6D4] shrink-0" />
-              PMC Certified · Est. 2009 · Karachi
+              PMC Certified · Est. 2009
             </div>
 
-            <h1 className="font-heading font-extrabold text-white leading-[1.0] tracking-[-0.04em] mb-6"
-                style={{ fontSize: "clamp(2.8rem, 5.5vw, 5rem)" }}>
+            <h1 className="heading-xl !text-white mb-6">
               Dental Care That<br />
               <span className="text-gradient">Sets the Standard.</span>
             </h1>
 
-            <p className="text-[#94A3B8] text-[17px] leading-relaxed mb-10 max-w-[420px]">
-              World-class treatments, transparent pricing, and zero compromise on your comfort. Trusted by over 5,000 patients across Karachi.
+            <p className="text-[#A3A3A3] text-[17px] leading-relaxed mb-10 max-w-[440px]">
+              World-class treatments, transparent pricing, and zero compromise on your comfort. Trusted by over 5,000 patients across Abbottabad.
             </p>
 
-            <div className="flex items-center gap-3 flex-wrap">
+            <div className="flex items-center gap-4 flex-wrap">
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary">
                 Book on WhatsApp <ArrowRight className="w-4 h-4" />
               </a>
@@ -154,11 +153,11 @@ export default function HomePage() {
             </div>
 
             {/* Stats */}
-            <div className="mt-14 pt-8 border-t border-white/8 grid grid-cols-2 sm:grid-cols-4 gap-6">
+            <div className="mt-16 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-6">
               {STATS.map((s) => (
                 <div key={s.label}>
                   <div className="text-white font-heading font-bold text-2xl tracking-tight">{s.value}</div>
-                  <div className="text-[#475569] text-[11px] font-medium mt-0.5">{s.label}</div>
+                  <div className="text-[#737373] text-[11px] font-semibold uppercase tracking-wider mt-1">{s.label}</div>
                 </div>
               ))}
             </div>
@@ -166,17 +165,17 @@ export default function HomePage() {
 
           {/* Right — Doctor photo */}
           <div className="hidden lg:block relative">
-            <div className="relative w-full max-w-[440px] mx-auto aspect-[3/4] rounded-2xl overflow-hidden">
+            <div className="relative w-full max-w-[460px] mx-auto aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-white/10">
               <Image
                 src="/images/dentist_doctor.png"
                 alt="Lead Dentist at SmileCare Pro"
                 fill
-                sizes="440px"
+                sizes="460px"
                 className="object-cover"
                 priority
               />
-              {/* Fade bottom into dark bg */}
-              <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-[#020817] to-transparent" />
+              {/* Refined gradient fade to match background */}
+              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
@@ -195,11 +194,11 @@ export default function HomePage() {
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E2E8F0] border border-[#E2E8F0] rounded-xl overflow-hidden">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E2E8F0] border border-[#E2E8F0] rounded-2xl overflow-hidden">
             {SERVICES.map((svc) => (
               <FadeIn key={svc.name}>
-                <div className="bg-white p-7 h-full flex flex-col gap-3 hover:bg-[#F8FAFC] transition-colors group">
-                  <h3 className="font-heading font-semibold text-[#0F172A] text-[15px] group-hover:text-[#06B6D4] transition-colors">
+                <div className="bg-white p-8 h-full flex flex-col gap-3 hover:bg-[#F8FAFC] transition-colors group">
+                  <h3 className="font-heading font-semibold text-[#0A0A0A] text-[16px] group-hover:text-[#06B6D4] transition-colors">
                     {svc.name}
                   </h3>
                   <p className="text-[#64748B] text-sm leading-relaxed flex-1">{svc.desc}</p>
@@ -209,7 +208,7 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="mt-8 flex justify-center">
+          <div className="mt-10 flex justify-center">
             <Link href="/services" className="btn-ghost-dark">
               View all treatments <ArrowRight className="w-4 h-4" />
             </Link>
@@ -219,11 +218,10 @@ export default function HomePage() {
 
       {/* ── 3. ABOUT TEASER ─────────────────────────────────────── */}
       <section className="section bg-dark-section">
-        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
+        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Image */}
           <FadeIn>
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
+            <div className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden ring-1 ring-white/10">
               <Image
                 src="/images/clinic_interior.png"
                 alt="SmileCare Pro clinic interior"
@@ -238,14 +236,14 @@ export default function HomePage() {
           <FadeIn>
             <span className="eyebrow">Our Clinic</span>
             <h2 className="heading-lg text-white mb-5">
-              15 Years of Clinical<br />Excellence in Karachi.
+              15 Years of Clinical<br />Excellence in Abbottabad.
             </h2>
-            <p className="text-[#94A3B8] text-[16px] leading-relaxed mb-8">
-              Founded in 2009, SmileCare Pro has grown into one of Karachi's most trusted dental practices — built on a foundation of medical rigour, patient empathy, and zero shortcuts.
+            <p className="text-[#A3A3A3] text-[16px] leading-relaxed mb-8">
+              Founded in 2009, SmileCare Pro has grown into one of Abbottabad's most trusted dental practices — built on a foundation of medical rigour, patient empathy, and zero shortcuts.
             </p>
-            <ul className="space-y-3 mb-10">
+            <ul className="space-y-4 mb-10">
               {TRUST_POINTS.map((pt) => (
-                <li key={pt} className="flex items-center gap-3 text-[#CBD5E1] text-sm">
+                <li key={pt} className="flex items-center gap-3 text-[#D4D4D8] text-sm font-medium">
                   <CheckCircle2 className="w-4 h-4 text-[#06B6D4] shrink-0" />
                   {pt}
                 </li>
@@ -266,14 +264,14 @@ export default function HomePage() {
             <h2 className="heading-lg text-[#0F172A]">The Results Speak<br />for Themselves.</h2>
           </FadeIn>
           <FadeIn>
-            <div className="max-w-2xl mx-auto">
+            <div className="max-w-3xl mx-auto">
               <BeforeAfterSlider
                 beforeSrc="/images/smile_before.png"
                 afterSrc="/images/smile_after.png"
                 beforeAlt="Before dental treatment"
                 afterAlt="After dental treatment at SmileCare Pro"
               />
-              <p className="text-center text-[#94A3B8] text-xs mt-4">
+              <p className="text-center text-[#64748B] text-xs mt-6 font-medium tracking-wide uppercase">
                 Actual patient result · 6 Porcelain Veneers · 2 visits
               </p>
             </div>
@@ -286,25 +284,25 @@ export default function HomePage() {
         <div className="container mx-auto">
           <FadeIn className="mb-12">
             <span className="eyebrow">Patient Stories</span>
-            <h2 className="heading-lg text-[#0F172A]">Trusted by Thousands<br />Across Karachi.</h2>
+            <h2 className="heading-lg text-[#0F172A]">Trusted by Thousands<br />Across Abbottabad.</h2>
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {TESTIMONIALS.map((t) => (
               <FadeIn key={t.name}>
-                <div className="bg-white border border-[#E2E8F0] rounded-xl p-7 h-full flex flex-col gap-4 hover:border-[#06B6D4]/30 hover:shadow-sm transition-all">
+                <div className="card p-8 h-full flex flex-col gap-5">
                   {/* Stars */}
-                  <div className="flex gap-0.5">
+                  <div className="flex gap-1">
                     {Array.from({ length: t.rating }).map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-[#06B6D4] text-[#06B6D4]" />
+                      <Star key={i} className="w-4 h-4 fill-[#06B6D4] text-[#06B6D4]" />
                     ))}
                   </div>
-                  <p className="text-[#334155] text-[15px] leading-relaxed flex-1">
+                  <p className="text-[#334155] text-[15px] leading-relaxed flex-1 font-medium">
                     &ldquo;{t.quote}&rdquo;
                   </p>
-                  <div>
-                    <p className="font-semibold text-[#0F172A] text-sm">{t.name}</p>
-                    <p className="text-[#94A3B8] text-xs">{t.title}</p>
+                  <div className="pt-5 border-t border-[#E2E8F0]">
+                    <p className="font-semibold text-[#0A0A0A] text-sm">{t.name}</p>
+                    <p className="text-[#64748B] text-xs mt-0.5">{t.title}</p>
                   </div>
                 </div>
               </FadeIn>
@@ -324,7 +322,7 @@ export default function HomePage() {
             <p className="text-[#64748B] text-[16px] leading-relaxed mb-8 max-w-sm">
               Can&rsquo;t find your answer? Reach out directly on WhatsApp — we typically respond within minutes.
             </p>
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary">
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary-dark">
               Ask on WhatsApp <ArrowRight className="w-4 h-4" />
             </a>
           </FadeIn>
@@ -335,14 +333,13 @@ export default function HomePage() {
       </section>
 
       {/* ── 7. FINAL CTA ────────────────────────────────────────── */}
-      <section className="bg-dark-section py-24">
+      <section className="bg-dark-section py-32 border-t border-white/10">
         <div className="container mx-auto text-center">
           <FadeIn>
-            <h2 className="font-heading font-extrabold text-white tracking-tight mb-4"
-                style={{ fontSize: "clamp(2rem, 4vw, 3.25rem)" }}>
+            <h2 className="heading-lg text-white mb-5">
               Your Best Smile Starts Here.
             </h2>
-            <p className="text-[#94A3B8] text-[16px] mb-10 max-w-md mx-auto">
+            <p className="text-[#A3A3A3] text-[17px] mb-10 max-w-md mx-auto leading-relaxed">
               No forms. No waiting rooms. Book your consultation directly on WhatsApp and we&rsquo;ll confirm within minutes.
             </p>
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary mx-auto">
